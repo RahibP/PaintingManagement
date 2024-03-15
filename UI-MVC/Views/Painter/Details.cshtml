@@ -1,0 +1,97 @@
+﻿@model Schilderij.BL.Domain.Painter
+
+@{
+    ViewBag.Title = "Painter details";
+    Layout = "_Layout";
+}
+
+<h1>Painter (ID: <span id="painterId">@Model.Id</span>)</h1>
+
+<style>
+    .pair {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+
+    dt, dd {
+        margin-right: 30px;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+</style>
+
+
+<div class="pair">
+    <dt>Name</dt>
+    <dd>@Model.PainterName</dd>
+</div>
+
+<div class="pair">
+    <dt>Date of birth</dt>
+    <dd>@Model.BirthDate.ToString("dd MMMM yyyy")</dd>
+</div>
+
+<div class="pair">
+    <dt>Date of death</dt>
+    <dd>
+        @if (@Model.DeathDate != null)
+        {
+            @Model.DeathDate.Value.ToString("dd MMMM yyyy")
+        }
+        else
+        {
+            @: Alive
+        }
+    </dd>
+</div>
+
+<div class="pair">
+    <dt>Nationality</dt>
+    <dd>@Model.Nationality</dd>
+</div>
+
+<div class="pair">
+    <dt>Painting style</dt>
+    <dd>@Model.PaintingStyle.ToString()</dd>
+</div>
+
+<h2>Paintings</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="paintingTableBody"></tbody>
+</table>
+
+
+
+<h3>Add painting</h3>
+
+<form id="paintingform"> 
+    
+    <div class="pair">
+        <label  for="paintingselect" class="col-md-4">Painting</label>
+        <select id="paintingselect" class="form-control" name="paintingid"></select>
+    </div>
+
+    <div class="pair">
+        <label  for="isSigned" class="col-md-4">Is Signed?</label>
+        <input type="checkbox" name="signed" id="isSigned" />
+    </div>
+
+    <button type="button" id="addPaintingtoPainter" class="btn btn-primary">Add painting to painter</button>
+</form>
+
+
+@section Scripts
+{
+    <script src="js/painter/details.js"></script>
+}

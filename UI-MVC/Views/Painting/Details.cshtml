@@ -1,0 +1,65 @@
+﻿@using Schilderij.BL.Domain
+@model Schilderij.BL.Domain.Painting
+
+@{
+    ViewBag.Title = "Painting " + Model.Id;
+    Layout = "_Layout";
+}
+
+
+<h1>Painting details</h1>
+
+<style>
+    .pair {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+
+    dt, dd {
+        margin-right: 30px;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+</style>
+
+<div class="pair">
+    <dt>Title</dt>
+    <dd>@Model.Title</dd>
+</div>
+<div class="pair">
+    <dt>Creation year</dt>
+    <dd>@Model.CreationYear</dd>
+</div>
+<div class="pair">
+    <dt>Price in USD</dt>
+    <dd>@($"${Model.Price:N0}")</dd>
+</div>
+
+
+<h2>Painter(s)</h2>
+<table class="table">
+    <tr>
+        <th>Signed?</th>
+        <th>Name</th>
+        <th>Date of birth</th>
+        <th>Nationality</th>
+        <th></th>
+    </tr>
+    <tbody>
+    @foreach (PainterPainting painterPainting in Model.Painters)
+    {
+        <tr>
+            <td>@(painterPainting.IsSigned ? "Yes" : "No")</td>
+            <td>@painterPainting.Painter.PainterName</td>
+            <td>@painterPainting.Painter.BirthDate.ToString("dd MMMM yyyy")</td>
+            <td>@painterPainting.Painter.Nationality</td>
+            <td>
+                <a asp-area="" asp-controller="Painter" asp-action="Details" asp-route-id="@painterPainting.Painter.Id">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

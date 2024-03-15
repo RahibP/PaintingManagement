@@ -1,0 +1,22 @@
+﻿@model Schilderij.BL.Domain.Painter
+
+@foreach (var painterPainting in Model.Paintings)
+{
+    <tr>
+        <td>@(painterPainting.Painting.Title)</td>
+        <td>@painterPainting.Painting.CreationYear</td>
+
+        @if (painterPainting.Painting.Price > 0)
+        {
+            <td>
+                @($"${painterPainting.Painting.Price:N0}")
+            </td>
+        }
+        else
+        {
+            <td>
+                "Unknown"
+            </td>
+        }
+    </tr>
+}

@@ -1,0 +1,26 @@
+﻿@model Schilderij.BL.Domain.Museum
+
+@{
+    ViewBag.Title = "All museums";
+    Layout = "_Layout";
+}
+
+<h1>All museums</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Website</th>
+    </tr>
+    </thead>
+    <tbody id="museumTableBody">
+</table>
+
+<button class="btn btn-primary" id="loadMuseums">Load museums</button>
+
+@section Scripts
+{
+    <script src="js/museum/index.js"></script>
+}

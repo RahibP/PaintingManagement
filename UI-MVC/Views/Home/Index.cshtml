@@ -1,0 +1,7 @@
+﻿@model System.Collections.Generic.IEnumerable<Schilderij.BL.Domain.Painting>
+
+@{
+    ViewData["Title"] = "Painting details";
+}
+
+@await Html.PartialAsync("ShowAllPaintings", Model)

@@ -1,0 +1,9 @@
+﻿POST  https://localhost:7118/api/Museums
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "The Smithsonian",
+  "address": "10th St. & Constitution Ave. NW, Washington, DC 20560, United States",
+  "websiteUrl": "https://naturalhistory.si.edu/"
+}

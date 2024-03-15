@@ -1,0 +1,26 @@
+﻿@using Schilderij.BL.Domain
+@model System.Collections.Generic.IEnumerable<Schilderij.BL.Domain.Painting>
+
+<h1>All paintings</h1>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Creation year</th>
+        <th>Price in USD</th>
+        <th></th>
+    </tr>
+    <tbody>
+    @foreach (Painting painting in Model)
+    {
+        <tr>
+            <td>@painting.Title</td>
+            <td>@painting.CreationYear</td>
+            <td>@($"${painting.Price:N0}")</td>
+            <td>
+                <a asp-area="" asp-controller="Painting" asp-action="Details" asp-route-id="@painting.Id">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

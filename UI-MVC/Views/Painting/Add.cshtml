@@ -1,0 +1,39 @@
+﻿@model Schilderij.UI.Web.MVC.Models.NewPaintingViewModel
+
+@{
+    ViewBag.Title = "Add painting";
+    Layout = "_Layout";
+}
+
+<h1>Add painting</h1>
+<form asp-controller="Painting" asp-action="Add" method="post">
+    <div>
+        <label asp-for="Title">Title of the painting</label>
+        <input asp-for="Title" class="form-control" type="text"/>
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="CreationYear">Year of creation</label>
+        <input asp-for="CreationYear" class="form-control" type="number"/>
+        <span asp-validation-for="CreationYear" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" type="number"/>
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="MuseumName">Name of the museum</label>
+        <input asp-for="MuseumName" class="form-control" type="text" name="MuseumName"/>
+        <span asp-validation-for="MuseumName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="MuseumAddress">Address of the museum</label>
+        <input asp-for="MuseumAddress" class="form-control" type="text" name="MuseumAddress"/>
+    </div>
+    <div>
+        <label asp-for="MuseumUrl">URL of the museum</label>
+        <input asp-for="MuseumUrl" class="form-control" type="text" name="MuseumURL"/>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Add"/>
+</form>
